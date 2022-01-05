@@ -74,13 +74,17 @@ Reformatting options:
 
 // main program
 int main(int argc, char *argv[]) {
+    argc = 2;
+    char* arg = "/Users/zihaoweng/Desktop/Projects/pbrt-v3/scenes/killeroo-simple.pbrt";
+    argv = &arg;
+    printf("%s\n", argv[0]);
     google::InitGoogleLogging(argv[0]);
     FLAGS_stderrthreshold = 1; // Warning and above.
 
     Options options;
     std::vector<std::string> filenames;
     // Process command-line arguments
-    for (int i = 1; i < argc; ++i) {
+    for (int i = 0; i < argc; ++i) {
         if (!strcmp(argv[i], "--nthreads") || !strcmp(argv[i], "-nthreads")) {
             if (i + 1 == argc)
                 usage("missing value after --nthreads argument");
